@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>Welcom Home</h1>
+    <div >
+        <form action="{% url 'get_token' %}">
+        <button class="mb-1 btn btn-info" type="submit">Get Token</button>
+        {% if tok %}
+        <div class="mb-1"><span>Token : </span><span>{{ tok }}</span> </label>
+        
+        {% endif %}
+    </form>
+    </div>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button class="btn btn-outline-danger" type="submit">logout</button>
+    </form>
+    
+{% endblock %}
